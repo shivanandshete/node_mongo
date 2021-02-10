@@ -8,7 +8,7 @@ services:
     restart: always
     links:
       - mongo
-    network:
+    networks:
       - nodenw  
    mongo:
       image: mango:latest
@@ -20,8 +20,8 @@ services:
           MANGO_INITDB_DATABASE: node_db
       ports:
         - 27017:27017
-      network:
-        -nodenw  
+      networks:
+        - nodenw  
 volumes:
   nodevolume:
 networks:
