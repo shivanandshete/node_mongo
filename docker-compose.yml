@@ -5,18 +5,18 @@ services:
     restart: always
     build: .
     ports:
-      - '8080:3000'
+      - "8080:3000"
     networks:
-       - test    
+      - test    
     links:
       - mongo
   mongo:
     container_name: mongo
     image: mongo
     ports:
-      - '27017:27017'
+      - "27017:27017"
     networks:
       - test
 networks:
-  test:
-    driver: 'bridge'      
+      test:
+         driver: "bridge"
