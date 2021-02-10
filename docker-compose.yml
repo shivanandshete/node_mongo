@@ -4,6 +4,14 @@ services:
     container_name: docker-node-mongo
     restart: always
     build: .
+    environment:
+      - APP_NAME=strapi-app
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=mongo
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapi
+      - DATABASE_USERNAME=dbusername
+      - DATABASE_PASSWORD=dbpassword
     ports:
       - "8080:3000"
     networks:
@@ -13,6 +21,10 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+      - MONGO_INITDB_ROOT_USERNAME=dbusername
+      - MONGO_INITDB_ROOT_PASSWORD=dbpassword
     ports:
       - "27017:27017"
     networks:
