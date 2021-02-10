@@ -10,9 +10,22 @@ services:
       - test
     links:
       - mongo
+     environment:
+      - APP_NAME=strapi-app
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=mongo
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=strapi
+      - MONGO_INITDB_ROOT_USERNAME=dbusername
+      - MONGO_INITDB_ROOT_PASSWORD=dbpassword
+      - HOST=localhost 
   mongo:
     container_name: mongo
     image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=strapi
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=dbusername
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=dbpassword
     ports:
       - '27017:27017'
     networks:
